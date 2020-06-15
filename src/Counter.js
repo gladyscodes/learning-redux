@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { increase, decrease } from './redux/actions';
 
 const Counter = () => {
+  // const [count, setCount] = useState(0);
+  // const handleMinus = () => setCount((prevState) => prevState - 1);
+  // const handlePlus = () => setCount((prevState) => prevState + 1);
 
-  const [count, setCount] = useState(0);
-  const handleMinus = () => setCount((prevState) => prevState - 1);
-  const handlePlus = () => setCount((prevState) => prevState + 1);
+  const count = useSelector((state) => state.counter);
+  const dispatch = useDispatch();
    
 return(
   <div>
     <h1>{count}</h1>
     <div>
-      <button onClick={handleMinus}>-</button>
-      <button onClick={handlePlus}>+</button>
+      <button onClick={() => dispatch(decrease())}>-</button>
+      <button onClick={() => dispatch(increase())}>+</button>
     </div>
   </div>
 )
