@@ -4,7 +4,7 @@ import counter from './reducer';
 import todos from './TodosDuck';
 
 // Agregar nuevos reducers aquí
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
    counter,
    todos,
 })
@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   rootReducer,
-  composeEnhancers(applyMiddleware(thunk),
+  composeEnhancers(applyMiddleware(thunk)),
   // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
 
