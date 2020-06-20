@@ -60,8 +60,9 @@ export const createTodo = (payload) => ({
 export const getTodos = () => (dispatch) => {
   dispatch(loadingTodos());
 
-  axios.get("http://localhost:4000/todos")
-  .then((res) => {
+  return axios
+   .get("http://localhost:4000/todos")
+   .then((res) => {
     dispatch(getTodosSuccess(res.data));
   })
   .catch((res) => {

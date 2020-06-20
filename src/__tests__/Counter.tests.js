@@ -1,7 +1,7 @@
 import React from 'react';
 import Counter from '../Counter';
 import { renderWithProvider } from '../jest/utils';
-import { fireEvent } from '@testing-library/react';
+import { fireEvent } from '@testing-library/dom';
 
 
 describe("Counter component", () => {
@@ -14,17 +14,13 @@ describe("Counter component", () => {
     const { getByRole } = renderWithProvider(<Counter/>);
     const increment  = getByRole("button", { name: "+"});
     fireEvent.click(increment);
-    expect(getByRole("heading", {name: 1})).toBeInTheDocument();
+    expect(getByRole("heading", {name: "1"})).toBeInTheDocument();
   });
 
   it("should decrement count", () => {
-    const { getByRole, debug } = renderWithProvider(<Counter/>);
+    const { getByRole } = renderWithProvider(<Counter/>);
     const decrement  = getByRole("button", { name: "-"});
     fireEvent.click(decrement);
-    debug();
     expect(getByRole("heading", {name: "-1"})).toBeInTheDocument();
   })
-
-
-
 });
